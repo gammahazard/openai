@@ -98,7 +98,7 @@ app.post('/explain-python', async (req, res) => {
   
       const response = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: "Modify this to be grammatically acceptable and ensure it makes sense and there is no punctuation or other errors. Ensure there is no sentences that are too short or run on sentences, try to replace adjectives with better sounding synonyms and make me sound more professional:\n\n$" +text3+"\n\n",
+        prompt: "Modify this to be grammatically acceptable and ensure it makes sense and there is no punctuation or other errors. Ensure there is no sentences that are too short or run on sentences, try to replace adjectives with better sounding synonyms and make the text sound more professional and easy to understand:\n\n$" +text3+"\n\n",
         temperature: 0,
         max_tokens: 500,
         top_p: 1.0,

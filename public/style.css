@@ -73,4 +73,11 @@ input[type=submit] {
 .disabled {
     opacity: 0.5;
     cursor: not-allowed;
+    pointer-events:none;
+  }
+  #cresult, #gresult, #result {
+    width:50%;
+    display:flex;
+    margin-inline:auto;
+   
   }

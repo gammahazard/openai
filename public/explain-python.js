@@ -36,7 +36,7 @@ cform.addEventListener('submit', async (event) => {
       const result = data.data.trim();
 
       // Display the result in the result div
-      cresultDiv.innerHTML = `<p>${result}</p>`;
+      cresultDiv.innerHTML = `<h4>>${result}</h4>`;
     } else {
       // Display an error message
       const data = await tresponse.json();
