@@ -36,7 +36,7 @@ console.log (JSON.stringify(code))
       const result = data.data.trim();
 
       // Display the result in the result div
-      cresultDiv.innerHTML = `<h4>>${result}</h4>`;
+      cresultDiv.innerHTML = `<h4>${JSON.stringify(result)}</h4>`;
     } else {
       // Display an error message
       const data = await tresponse.json();

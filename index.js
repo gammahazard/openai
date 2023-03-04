@@ -72,12 +72,13 @@ app.post('/explain-python', async (req, res) => {
       // Call OpenAI API to explain the code
       const response = await openai.createCompletion({
         model: "code-davinci-002",
-        prompt:"# Python 3 \n "+code+"\n Explanation of what the code does###",
+        prompt:"#Python 3 let {code} = code and Explain the following" +code+ "# Explanation of what the code does",
         temperature: 0,
         max_tokens: 500,
         top_p: 1.0,
-        frequency_penalty: 0.5,
-        stop: ['\n'],
+        frequency_penalty: 0.0,
+        presence_penealty:0.0
+     
       });
       return res.status(200).json({
         success: true,
