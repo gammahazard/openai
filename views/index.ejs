@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/style.css">
+    <meta charset="utf-8">
+    
+    <title>Find Time Complexity</title>
+  </head>
+  <body>
+    <h1>Find Time Complexity</h1>
+    <form action="/find-complexity" method="POST">
+      <label for="function">Type your Function:</label>
+      <textarea name="function" id="function" rows="10" cols="50"></textarea>
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+    <br>
+    <div id="result"> - - - <br></div>
+    <hr>
+    <h1>Python Code Explanation</h1>
+    <form id="cform">
+      <label for="code">Enter your Python code:</label><br>
+      <textarea id="code" name="code" rows="10" cols="50"></textarea><br>
+      <input id="cbutton" type="submit"></input>
+      <img id="loading-img" src="../public/assets/loader.gif" class = "loader"style="display:none" alt="loading">
+    </form>
+    <div id="cresult"></div>
+
+    <hr>
+    <h1>Make it Professional!</h1>
+    <form id="gform">
+      <label for="text">Enter your text:</label><br>
+      <textarea id="text" name="text" rows="10" cols="50"></textarea><br>
+      <input id="gbutton" type="submit"></input>
+      <img id="loading-img2" class="loader"src="../public/assets/loading.gif" style="display:none;">
+    </form>
+    <div id="gresult"></div>
+
+    <script src="../public/getcomplexity.js"></script>
+    <script src="../public/explain-python.js"></script>
+    <script src="../public/check-grammar.js"></script>
+  </body>
+</html>
