@@ -14,7 +14,7 @@ cform.addEventListener('submit', async (event) => {
 
     // Get the Python code from the text area
     const code = codeInput.value.trim();
-
+console.log (JSON.stringify(code))
     // Check if the code is empty
     if (code === '') {
       cresultDiv.innerHTML = '<p>Please enter some code.</p>';

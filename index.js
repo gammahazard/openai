@@ -72,12 +72,12 @@ app.post('/explain-python', async (req, res) => {
       // Call OpenAI API to explain the code
       const response = await openai.createCompletion({
         model: "code-davinci-002",
-        prompt:"# Python 3 \n\n "+code+"\n\n # Explanation of what the code does\n\n#",
+        prompt:"# Python 3 \n "+code+"\n Explanation of what the code does###",
         temperature: 0,
         max_tokens: 500,
         top_p: 1.0,
-        frequency_penalty: 0.0,
-        presence_penalty: 0.0,
+        frequency_penalty: 0.5,
+        stop: ['\n'],
       });
       return res.status(200).json({
         success: true,
@@ -98,12 +98,12 @@ app.post('/explain-python', async (req, res) => {
   
       const response = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: "Modify this to be grammatically acceptable and ensure it makes sense and there is no punctuation or other errors. Ensure there is no sentences that are too short or run on sentences, try to replace adjectives with better sounding synonyms and make the text sound more professional and easy to understand:\n\n$" +text3+"\n\n",
+        prompt: "Modify this to be grammatically acceptable and ensure it makes sense and there is no punctuation or other errors. Ensure all words are spelt correctly, if you encounter a word that is not, try to use the context of the sentence to correct it, Ensure there is no sentences that are too short or run on sentences, try to replace adjectives with better sounding synonyms and make the text sound more professional and easy to understand:\n\n$" +text3+"\n\n",
         temperature: 0,
         max_tokens: 500,
         top_p: 1.0,
-        frequency_penalty: 0.0,
-        presence_penalty: 0.0,
+        frequency_penalty: 0.5,
+        stop: ['\n'],
       });
   
       const result = response.data.choices[0].text.trim();
