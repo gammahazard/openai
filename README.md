@@ -50,6 +50,6 @@ const response = await openai.createCompletion({
   stop: ['\n'],
 });```
 
-### Conclusion
+#Conclusion
 
 OpenAI API is a powerful tool for natural language processing. It allows developers to structure prompts in many different ways and include any user input they may have allowed. This makes it very interesting to play around with and see the many different outputs that can be achieved.
