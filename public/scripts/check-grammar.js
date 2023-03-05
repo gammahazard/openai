@@ -9,8 +9,8 @@ gform.addEventListener('submit', async (event) => {
 
   try {
     // Disable the button and show the loading image
-    gbutton.disabled = true;
-    loadingImg2.style.display = 'inline';
+    gbutton.style.display = "none"
+    loadingImg2.style.display = 'flex';
 
     // Get the text from the text area
     const text3 = textInput.value.trim();
@@ -32,7 +32,7 @@ console.log (JSON.stringify(text3))
       const result = data.data.trim();
 
       // Display the result in the result div
-      gresultDiv.innerHTML = `<p>${result}</p>`;
+      gresultDiv.innerHTML = `<p class="answertext">${result}</p>`;
       console.log(JSON.stringify(result))
     } else {
       // Display an error message
@@ -48,7 +48,7 @@ console.log (JSON.stringify(text3))
   } finally {
     // Hide the loading image and enable the button
     loadingImg2.style.display = 'none';
-    gbutton.disabled = false;
+    gbutton.style.display = 'block';
   }
 
   return false;

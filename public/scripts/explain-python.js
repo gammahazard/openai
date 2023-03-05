@@ -10,7 +10,7 @@ cform.addEventListener('submit', async (event) => {
   try {
     // Disable the button and show the loading image
     cbutton.disabled = true;
-    loadingImg.style.display = 'inline';
+    loadingImg.style.display = 'flex';
 
     // Get the Python code from the text area
     const code = codeInput.value.trim();
@@ -36,7 +36,7 @@ console.log (JSON.stringify(code))
       const result = data.data.trim();
 
       // Display the result in the result div
-      cresultDiv.innerHTML = `<h4>${JSON.stringify(result)}</h4>`;
+      cresultDiv.innerHTML = `<p class="answertext">${JSON.stringify(result)}</p>`;
     } else {
       // Display an error message
       const data = await tresponse.json();
