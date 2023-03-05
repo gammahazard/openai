@@ -72,7 +72,7 @@ app.post('/explain-python', async (req, res) => {
       // Call OpenAI API to explain the code
       const response = await openai.createCompletion({
         model: "code-davinci-002",
-        prompt:"# Python 3 \n" +code+ "\n\n# Explanation of what the code does\n\n#",
+        prompt:`# Python 3 \n${code}\n\n# Explanation of what this code does, let {code}=code\n\n#`,
         temperature: 0,
         max_tokens: 2400,
         top_p: 1.0,
@@ -97,7 +97,7 @@ app.post('/explain-python', async (req, res) => {
   console.log(text3)
       const response = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: `Convert this to standard english, and correct any grammatical and spelling errors: \n\n ${text3}`,
+        prompt: `Convert this to standard english, and correct any grammatical and spelling errors and make it sound more professional: \n\n ${text3}`,
         temperature: 0,
         max_tokens: 3100,
         top_p: 1.0,

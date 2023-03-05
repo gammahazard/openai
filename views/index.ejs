@@ -29,8 +29,9 @@
   </header>
   <body>
     <h1 class="title">Find Time Complexity</h1>
+    <h2 class="explanations">Paste your function and I will tell you the time complexity</h2>
     <form action="/find-complexity" method="POST">
-      <div class="prompts"> <label for="function">Type your Function:</label></div><br>
+      <div class="prompts"> <label for="function"></label></div><br>
       <br>
       <textarea name="function" id="function" rows="10" cols="50"></textarea>
       <br>
@@ -41,8 +42,9 @@
     <div id="result" class="answers"> </div>
     <hr>
     <h1 class="title">Python Code Explanation</h1>
+    <h2 class="explanations">Paste your Python code, DoGPT will use openAI to try and explain the code to you! (Max 2400 chars)</h2>
     <form id="cform">
-      <div class="prompts"> <label for="code">Enter your Python code:</label></div><br>
+      <div class="prompts"> <label for="code"></label></div><br>
       <br>
       <textarea id="code" name="code" rows="10" cols="50"></textarea><br>
       <input id="cbutton" type="submit"></input>
@@ -51,9 +53,10 @@
     <div id="cresult" class="answers"></div>
 
     <hr>
-   <!----<h1 class="title">Make it Professional!</h1>
+    <h1 class="title">Make it Professional!</h1>
+    <h2 class="explanations">Input your text, and let DoGPT do the work!, it will correct any grammar errors and spelling mistakes, as well as providing better variations of text that will sound better. The result will be broken down sentence by sentence!</h2>
     <form id="gform">
-      <div class="prompts"> <label for="text">Enter your text:</label></div><br>
+      <div class="prompts"> <label for="text"></label></div><br>
       <br>
       <textarea id="text3" name="text" rows="10" cols="50"></textarea><br>
       <input id="gbutton" type="submit"></input>
@@ -61,7 +64,7 @@
     </form>
     <div id="gresult" class="answers"></div>
 <hr>
-<h1 class="title">Ask Anything</h1>
+<!-- <h1 class="title">Ask Anything</h1>
 <form id="aform">
  <div class="prompts"><label for="question">Enter your question:</label></div> <br>
  <br>
