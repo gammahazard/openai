@@ -46,7 +46,7 @@ app.post('/find-complexity', async (req, res) => {
 
         The time complexity of this function is
         ###`,
-      max_tokens: 500,
+      max_tokens: 1000,
       temperature: 0,
       top_p: 1.0,
       frequency_penalty: 0.0,
@@ -74,7 +74,7 @@ app.post('/explain-python', async (req, res) => {
         model: "code-davinci-002",
         prompt:"# Python 3 \n" +code+ "\n\n# Explanation of what the code does\n\n#",
         temperature: 0,
-        max_tokens: 2100,
+        max_tokens: 2400,
         top_p: 1.0,
         frequency_penalty: 0.0,
         stop: ['\n'],
@@ -94,16 +94,16 @@ app.post('/explain-python', async (req, res) => {
     try {
       const { text3 } = req.body;
     
-  
+  console.log(text3)
       const response = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: `#Correct this text as per the english standards, and make sure it makes sense and please make it sound more professional, keep in mind this will be posted on social media platform so many people will see it \n\n${text3}`,
-        temperature: 4,
-        max_tokens: 2400,
-        top_p: 0.5,
+        prompt: `Convert this to standard english, and correct any grammatical and spelling errors: \n\n ${text3}`,
+        temperature: 0,
+        max_tokens: 3100,
+        top_p: 1.0,
         frequency_penalty: 0,
         presence_penalty: 0,
-        stop: ['\n'],
+   
       });
   
   
@@ -114,6 +114,29 @@ app.post('/explain-python', async (req, res) => {
     }
   
   });
+  // app.post('/ask-anything', async (req, res) => {
+  //   try {
+  //     const { question } = req.body;
+  
+  
+  
+  //     const response = await openai.createCompletion({
+  //       model: "text-davinci-003",
+  //       prompt: "I am a highly intelligent question answering bot. If you ask me a question that is rooted in truth, I will give you the answer. If you ask me a question that is nonsense, trickery, or has no clear answer, I will respond with \"Unknown\".\n\nQ: " + question + "\nA:",
+  //       temperature: 0,
+  //       max_tokens: 2500,
+  //       top_p: 1,
+  //       frequency_penalty: 0.0,
+  //       presence_penalty: 0.0,
+  //       stop: ["\n"],
+  //     });
+
+  //     res.json({ success: true, data: response.data.choices[0].text.trim() });
+  //   } catch (error) {
+  //     res.status(500).json({ success: false, error: error.message });
+   
+  //   }
+  // });
 // Start the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

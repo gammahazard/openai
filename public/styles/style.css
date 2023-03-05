@@ -168,6 +168,7 @@ input[type=submit] {
     width:50%;
     display:flex;
     margin-inline:auto;
+    margin-top:0.5rem;
    
   }
   

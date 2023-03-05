@@ -14,7 +14,7 @@ cform.addEventListener('submit', async (event) => {
 
     // Get the Python code from the text area
     const code = codeInput.value.trim();
-console.log (JSON.stringify(code))
+
     // Check if the code is empty
     if (code === '') {
       cresultDiv.innerHTML = '<p>Please enter some code.</p>';
@@ -34,9 +34,20 @@ console.log (JSON.stringify(code))
       // Parse the tresponse and display the result
       const data = await tresponse.json();
       const result = data.data.trim();
+      cresultDiv.innerHTML = '';
+      cresultDiv.classList.add('typing');
 
-      // Display the result in the result div
-      cresultDiv.innerHTML = `<p class="answertext">${JSON.stringify(result)}</p>`;
+      // Loop through each word in the result and display it one by one
+      const words = result.split(' ');
+      for (let i = 0; i < words.length; i++) {
+        const word = words[i];
+        const delay = i * 450;
+
+        // Use setTimeout to delay the display of each word
+        setTimeout(() => {
+          cresultDiv.innerHTML += `<span class="typed">${word}&nbsp;</span>`;
+        }, delay);
+      }
     } else {
       // Display an error message
       const data = await tresponse.json();
@@ -54,5 +65,5 @@ console.log (JSON.stringify(code))
     cbutton.disabled = false;
   }
 
-  return false
+  return false;
 });

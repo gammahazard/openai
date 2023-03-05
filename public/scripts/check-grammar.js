@@ -14,7 +14,7 @@ gform.addEventListener('submit', async (event) => {
 
     // Get the text from the text area
     const text3 = textInput.value.trim();
-console.log (JSON.stringify(text3))
+
     // Call the server to check the grammar
     const gresponse = await fetch('/check-grammar', {
       method: 'POST',
@@ -32,8 +32,8 @@ console.log (JSON.stringify(text3))
       const result = data.data.trim();
 
       // Display the result in the result div
-      gresultDiv.innerHTML = `<p class="answertext">Professionalized: ${result}</p>`;
-
+      gresultDiv.innerHTML = `<p class="answertext">${result}</p>`;
+console.log(result)
     } else {
       // Display an error message
       const data = await gresponse.json();
