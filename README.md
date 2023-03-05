@@ -48,7 +48,7 @@ const response = await openai.createCompletion({
   top_p: 1.0,
   frequency_penalty: 0.0,
   stop: ['\n'],
-});
+});```
 
 ### Conclusion
 
