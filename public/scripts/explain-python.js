@@ -45,7 +45,7 @@ cform.addEventListener('submit', async (event) => {
 
         // Use setTimeout to delay the display of each word
         setTimeout(() => {
-          cresultDiv.innerHTML += `<span class="typed">${word}&nbsp;</span>`;
+          cresultDiv.innerHTML += `<span class="typed">${word}</span>`;
         }, delay);
       }
     } else {
