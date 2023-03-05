@@ -41,11 +41,11 @@ cform.addEventListener('submit', async (event) => {
       const words = result.split(' ');
       for (let i = 0; i < words.length; i++) {
         const word = words[i];
-        const delay = i * 450;
+        const delay = i * 150;
 
         // Use setTimeout to delay the display of each word
         setTimeout(() => {
-          cresultDiv.innerHTML += `<span class="typed">${word}</span>`;
+          cresultDiv.innerHTML += `<span class="typed">${word}&nbsp;</span>`;
         }, delay);
       }
     } else {

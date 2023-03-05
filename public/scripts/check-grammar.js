@@ -40,7 +40,7 @@ gform.addEventListener('submit', async (event) => {
 
     // Use setTimeout to delay the display of each line
     setTimeout(() => {
-      gresultDiv.innerHTML += `<p><span class="typed">${line}. </span></p>`;
+      gresultDiv.innerHTML += `<p><span class="typed2">${line}. </span></p>`;
     }, delay);
   }
     
