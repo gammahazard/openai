@@ -1,5 +1,5 @@
 const gform = document.querySelector('#gform');
-const textInput = document.querySelector('#text');
+const textInput = document.querySelector('#text3');
 const gresultDiv = document.querySelector('#gresult');
 const gbutton = document.querySelector('#gbutton');
 const loadingImg2 = document.querySelector('#loading-img2');
@@ -21,7 +21,7 @@ console.log (JSON.stringify(text3))
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ text3 }),
+      body: (JSON.stringify({ text3 })),
   
     });
   
@@ -32,8 +32,8 @@ console.log (JSON.stringify(text3))
       const result = data.data.trim();
 
       // Display the result in the result div
-      gresultDiv.innerHTML = `<p class="answertext">${result}</p>`;
-      console.log(JSON.stringify(result))
+      gresultDiv.innerHTML = `<p class="answertext">Professionalized: ${result}</p>`;
+
     } else {
       // Display an error message
       const data = await gresponse.json();

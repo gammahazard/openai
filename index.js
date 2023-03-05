@@ -93,25 +93,26 @@ app.post('/explain-python', async (req, res) => {
   app.post('/check-grammar', async (req, res) => {
     try {
       const { text3 } = req.body;
-  
-      const openai = new OpenAIApi(configuration);
+    
   
       const response = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: "Modify this to be grammatically acceptable and ensure it makes sense and there is no punctuation or other errors. Ensure all words are spelt correctly, if you encounter a word that is not, try to use the context of the sentence to correct it, Ensure there is no sentences that are too short or run on sentences, try to replace adjectives with better sounding synonyms and make the text sound more professional and easy to understand:\n\n$" +text3+"\n\n",
-        temperature: 0,
-        max_tokens: 500,
-        top_p: 1.0,
-        frequency_penalty: 0.5,
+        prompt: `#Correct this text as per the english standards, and make sure it makes sense and please make it sound more professional, keep in mind this will be posted on social media platform so many people will see it \n\n${text3}`,
+        temperature: 4,
+        max_tokens: 2400,
+        top_p: 0.5,
+        frequency_penalty: 0,
+        presence_penalty: 0,
         stop: ['\n'],
       });
   
-      const result = response.data.choices[0].text.trim();
   
-      res.json({ data: result });
+  
+      res.json({ success: true, data: response.data.choices[0].text.trim() });
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      res.status(500).json({ success: false, error: error.message });
     }
+  
   });
 // Start the server
 const port = process.env.PORT || 3000;
