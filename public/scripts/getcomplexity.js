@@ -22,7 +22,7 @@ form.addEventListener('submit', async (event) => {
       },
       body: JSON.stringify({ function: func }),
     });
-
+console.log(response)
     if (response.ok) {
       // Parse the response and display the result
       const data = await response.json();

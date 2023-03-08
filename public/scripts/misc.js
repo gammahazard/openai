@@ -38,3 +38,15 @@ answersElements.forEach((element) => {
     copyToClipboard(element);
   });
 });
+const modal = document.getElementById('modal');
+const modalClose = document.getElementById('modal-close');
+
+modalClose.addEventListener('click', () => {
+  modal.style.display = 'none';
+});
+
+window.addEventListener('click', (event) => {
+  if (event.target == modal) {
+    modal.style.display = 'none';
+  }
+});

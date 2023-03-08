@@ -90,32 +90,10 @@ app.post('/explain-python', async (req, res) => {
       });
     }
   });
-  app.post('/check-grammar', async (req, res) => {
-    try {
-      const { text3 } = req.body;
-    
-  console.log(text3)
-      const response = await openai.createCompletion({
-        model: "text-davinci-003",
-        prompt: `Convert this to standard english, and correct any grammatical and spelling errors and make it sound more professional: \n\n ${text3}`,
-        temperature: 0,
-        max_tokens: 3100,
-        top_p: 1.0,
-        frequency_penalty: 0,
-        presence_penalty: 0,
-   
-      });
-  
-  
-  
-      res.json({ success: true, data: response.data.choices[0].text.trim() });
-    } catch (error) {
-      res.status(500).json({ success: false, error: error.message });
-    }
-  
-  });
+
+
   // app.post('/ask-anything', async (req, res) => {
-  //   try {
+  //   try {czZ
   //     const { question } = req.body;
   
   
@@ -137,6 +115,93 @@ app.post('/explain-python', async (req, res) => {
    
   //   }
   // });
+  app.post('/generate-image', async (req, res) => {
+    try {
+      const { codejava } = req.body;
+      
+      // Call OpenAI API to explain the code
+      const openai = new OpenAIApi(configuration);
+      const response = await openai.createImage({
+        prompt:  codejava,
+        n: 1,
+        size: "512x512",
+      });
+
+      return res.status(200).json({
+        success: true,
+        data: response.data
+     
+      });
+    } catch (error) {
+      return res.status(400).json({
+        success: false,
+        error: error.response ? error.response.data : 'Issue with server',
+      });
+    }
+  });
+  app.post('/generate-animal', async (req, res) => {
+    try {
+      console.log("Request received to generate animal");
+      const prompt = "give me one type of species within the Petalonamae, Hemichordata, Ctenophora, Xenacoelomorpha or Proarticulata phyla"
+      const prompt2 = "give me one type of species within the Archaeocyatha, Agmata, Brachiopoda, Entoprocta, Echinodermata, Mollusca, Micrognathozoa, Kinorhyncha or Loricifera phyla"
+      // Call OpenAI API to generate the animals
+      const responses = await Promise.all([
+        openai.createCompletion({
+          model: 'text-davinci-003',
+          prompt: prompt,
+          temperature: 0.25,
+          max_tokens: 60,
+          top_p: 1.00,
+          frequency_penalty: 0,
+          presence_penalty: 0,
+        }),
+        openai.createCompletion({
+          model: 'text-davinci-003',
+          prompt: prompt2,
+          temperature: 0.75,
+          max_tokens: 60,
+          top_p: 1.00,
+          frequency_penalty: 0.85,
+          presence_penalty: 0,
+        }),
+      ]);
+      console.log("Responses received from OpenAI API");
+  
+      // Get the generated animals from the response
+      const animals = responses.map(response => response.data.choices[0].text.trim());
+      console.log("Animals generated: ", animals);
+  
+      // Call OpenAI API to generate the images
+      const imageResponses = await Promise.all([
+        openai.createImage({
+          prompt: animals[0],
+          n: 2,
+          size: "512x512",
+        }),
+        openai.createImage({
+          prompt: animals[1],
+          n: 2,
+          size: "512x512",
+        }),
+      ]);
+      
+      // Extract the image URLs from the response
+      const imageUrls = imageResponses.map(response => response.data.data[0].url);
+      
+      // Return the animals and their image URLs
+      return res.status(200).json({
+        success: true,
+        animals: animals,
+        imageUrls: imageUrls,
+      });
+    } catch (error) {
+      console.log("Error generating animal: ", error);
+      return res.status(400).json({
+        success: false,
+        error: error.response ? error.response.data : 'Issue with server',
+      });
+    }
+  });
 // Start the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

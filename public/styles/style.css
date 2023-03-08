@@ -21,6 +21,7 @@
   border-radius:12.5%;
   cursor:pointer;
 }
+
 body {
  width:100%;
  height:auto;
@@ -107,7 +108,70 @@ body {
   hr {
  border-top:3.5px solid yellow;
   }
+  #modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
   
+  .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+  }
+  
+  .close {
+    color: #ffffff;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  #modal-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  #modal-image {
+    max-width: 90%;
+    max-height: 90%;
+  }
+  
+  #modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
   /* Add a glow effect on hover and focus */
   textarea:hover,
   textarea:focus {
@@ -140,6 +204,10 @@ input[type=submit] {
     box-shadow: 0 0 5px #00ff00;
     color:black;
   }
+  .loading {
+    display:flex;
+    margin-inline:auto;
+  }
   /* Styles for loading gif */
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */
@@ -155,7 +223,41 @@ input[type=submit] {
     margin: auto;
     display:none;
   }
-  
+  .image-container {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    
+  }
+  #result-animal-random {
+    min-height:15rem;
+    margin-top:1.5rem;
+    display:block;
+    margin-inline:auto;
+    text-align:center;
+    margin-bottom:1.5rem;
+  }
+  #gen-animal {
+    background-color:transparent;
+    border:1px solid green;
+    border-radius:15%;
+    color:white;
+    font-size:larger;
+    font-family:"beauty";
+  }
+  #gen-animal:hover {
+color:purple;
+border:1px solid yellow;
+cursor:pointer;
+  }
+  .animal-image {
+    max-width: 300px;
+    max-height: 300px;
+    object-fit: contain;
+  }
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -173,19 +275,42 @@ input[type=submit] {
     
     height:auto;
     display:flex;
-    
+   margin-bottom:5rem;
     margin-top:0.5rem;
    
   }
-  #cresult, #result {
+  #gen-animal {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    margin-inline:auto;
+  }
+  #cresult, #result , #javaresult{
     display:flex;
     height:auto;
     width:100%;
+
+  }
+  #javaresult {
+    margin-top:2.5rem;
+    flex-wrap:nowrap;
+    flex-direction:row;
   }
   .typed {
     font-size:normal;
     display:block;
     margin-top:0.5rem;
+  }
+  img {
+    border-radius: 5px;
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #3af2ff, 0 0 30px #3af2ff, 0 0 40px #3af2ff, 0 0 55px #3af2ff;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .fade-in {
+    opacity: 1;
   }
 .typed2 {
   font-size:smaller;

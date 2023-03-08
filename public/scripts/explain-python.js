@@ -29,7 +29,7 @@ cform.addEventListener('submit', async (event) => {
       },
       body: JSON.stringify({ code }),
     });
-
+console.log(tresponse)
     if (tresponse.ok) {
       // Parse the tresponse and display the result
       const data = await tresponse.json();

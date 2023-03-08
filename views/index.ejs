@@ -28,6 +28,10 @@
 <hr>
   </header>
   <body>
+  
+<button id = "gen-animal">Show me a random animal!</button>
+<div id="result-animal-random"></div>
+<hr>
     <h1 class="title">Find Time Complexity</h1>
     <h2 class="explanations">Paste your function and I will tell you the time complexity</h2>
     <form action="/find-complexity" method="POST">
@@ -64,6 +68,18 @@
     </form>
     <div id="gresult" class="answers"></div>
 <hr>
+<h1 class="title">Generate an Image</h1>
+<h2 class="explanations">Enter your text, and generate </h2>
+<form id="javaform">
+  <div class="prompts"> <label for="codejava"></label></div><br>
+  <br>
+  <textarea id="codejava" name="codejava" rows="10" cols="50"></textarea><br>
+  <input id="javabutton" type="submit"></input>
+  <img id="loading-imgja" class="loader" src="../public/assets/loader.gif" class = "loader" style="display:none;"alt="loading">
+</form>
+<div id="javaresult" class="answers"></div>
+<hr>
+
 <!-- <h1 class="title">Ask Anything</h1>
 <form id="aform">
  <div class="prompts"><label for="question">Enter your question:</label></div> <br>
@@ -78,6 +94,8 @@
     <script src="../public/scripts/getcomplexity.js"></script>
     <script src="../public/scripts/explain-python.js"></script>
     <script src="../public/scripts/check-grammar.js"></script>
+    <script src="../public/scripts/generate-image.js"></script>
+    <script src="../public/scripts/generate-animal.js"></script>
    <!---- <script src="../public/scripts/ask-anything.js"></script>-->
     <script src="../public/scripts/misc.js"></script>
   </body>
