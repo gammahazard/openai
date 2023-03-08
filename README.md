@@ -28,7 +28,7 @@ To check the grammar of a sentence, input the sentence into the prompt and the A
 
 The OpenAI API model used for this prompt is also text-davinci-003.
 
-## Generate an image
+### Generate an image
 
 Generate an image, simply enter the text and it will generate an image using your entered text.
 
