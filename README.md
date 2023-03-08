@@ -59,6 +59,9 @@ const response = await openai.createCompletion({
 });
 ```
 
+## ScreenShots
+![App Screenshot](https://gyazo.com/8e319c30de7d792815664837b837d792.j)
+![App Screenshot](https://gyazo.com/9aa3772ea6893017f8aaafd95fdcdbe7.j)
 ## Conclusion
 
 OpenAI API is a powerful tool for natural language processing. It allows developers to structure prompts in many different ways and include any user input they may have allowed. This makes it very interesting to play around with and see the many different outputs that can be achieved.
