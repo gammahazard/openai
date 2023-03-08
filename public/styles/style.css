@@ -271,12 +271,16 @@ cursor:pointer;
     
   }
  #gresult{
-    white-space:break-spaces;
-    
+  
+    flex-wrap:nowrap;
+    flex-direction:column;
+    width:25%;
+    text-align:center;
     height:auto;
     display:flex;
    margin-bottom:5rem;
     margin-top:0.5rem;
+    margin-inline:auto;
    
   }
   #gen-animal {

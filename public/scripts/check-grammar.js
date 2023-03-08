@@ -16,6 +16,7 @@ gform.addEventListener('submit', async (event) => {
     const text3 = textInput.value.trim();
 
     // Call the server to check the grammar
+    console.log(text3)
     const gresponse = await fetch('/check-grammar', {
       method: 'POST',
       headers: {

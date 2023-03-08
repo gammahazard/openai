@@ -46,7 +46,7 @@ app.post('/find-complexity', async (req, res) => {
 
         The time complexity of this function is
         ###`,
-      max_tokens: 1000,
+      max_tokens: 5000,
       temperature: 0,
       top_p: 1.0,
       frequency_penalty: 0.0,
@@ -62,6 +62,35 @@ app.post('/find-complexity', async (req, res) => {
     return res.status(400).json({
       success: false,
       error: error.response ? error.response.data : 'Issue with server',
+    });
+  }
+});
+app.post('/check-grammar', async (req, res) => {
+  try {
+    // Get the text from the request body
+    const text3 = req.body.text3
+console.log(text3)
+    // Call OpenAI API to correct the grammar of the text
+    const response = await openai.createCompletion({
+      model: "text-davinci-002",
+      prompt: `Correct this text below to standard english:\n\n\n${text3}`,
+      temperature: 0,
+      max_tokens: 1000,
+      top_p: 1,
+      frequency_penalty: 0,
+      presence_penalty: 0,
+    });
+console.log(response.data)
+    // Return the corrected text to the client
+    const correctedText = response.data.choices[0].text.trim();
+    return res.status(200).json({
+      success: true,
+      data: correctedText,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      error: error.message,
     });
   }
 });
