@@ -1,6 +1,6 @@
 # OpenAI API Test
 
-A webpage for testing OpenAI API with three example prompts.
+A webpage for testing OpenAI API with various prompts
 
 ## Deployed App
 
@@ -27,6 +27,14 @@ The OpenAI API model used for this prompt is code-davinci-002.
 To check the grammar of a sentence, input the sentence into the prompt and the API will return a corrected sentence.
 
 The OpenAI API model used for this prompt is also text-davinci-003.
+
+## Generate an image
+
+Generate an image, simply enter the text and it will generate an image using your entered text.
+
+### Show me a random animal
+
+First, the route will make a request to text-davinci-003 and ask for a random animal from various phyla, next it will take the response from that request and use it to generate an image, this will happen two times so two random animal images are generated when the user clicks a button
 
 ### Prompt Structure
 
